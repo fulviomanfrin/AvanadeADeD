@@ -1,9 +1,13 @@
 package com.avanade.AvanadeADeD.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
-public class Character {
+@AllArgsConstructor
+@NoArgsConstructor
+public abstract class Character {
 
     private Long id;
     private String name;
