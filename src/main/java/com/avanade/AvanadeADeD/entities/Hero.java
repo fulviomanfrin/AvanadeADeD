@@ -2,7 +2,6 @@ package com.avanade.AvanadeADeD.entities;
 
 import com.avanade.AvanadeADeD.interfaces.Combatant;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 import java.util.Random;
 
