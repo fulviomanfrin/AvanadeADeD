@@ -1,5 +1,7 @@
 package com.avanade.AvanadeADeD.entities;
 
+import com.avanade.AvanadeADeD.dtos.CharacterDto;
+import com.avanade.AvanadeADeD.interfaces.Combatant;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,8 +12,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Character {
+@Table(name = "characters")
+@Entity(name = "Character")
+public class Character implements Combatant {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "health_points")
@@ -25,6 +33,19 @@ public abstract class Character {
     @Column(name = "dice_type")
     @Enumerated(EnumType.STRING)
     private DiceType diceType;
+    @Column(name = "faction")
+    @Enumerated(EnumType.STRING)
+    private Faction faction;
+
+    public Character(CharacterDto character) {
+        this.name = character.name();
+        this.healthPoints = character.healthPoints();
+        this.strength = character.strength();
+        this.agility = character.agility();
+        this.diceQuantity = character.diceQuantity();
+        this.diceType = character.diceType();
+        this.faction = character.faction();
+    }
 
 
     public void takeDamage(int damage) {
@@ -32,5 +53,15 @@ public abstract class Character {
         if (healthPoints <= 0) {
             System.out.println(this.name + " has been defeated!");
         }
+    }
+
+    @Override
+    public void attack(java.lang.Character target) {
+
+    }
+
+    @Override
+    public int getAttackDamage() {
+        return 0;
     }
 }
