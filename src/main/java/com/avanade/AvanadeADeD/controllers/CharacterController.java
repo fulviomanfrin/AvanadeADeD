@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/character")
@@ -17,14 +18,24 @@ public class CharacterController {
 
     @GetMapping
     @Transactional
-    public List<Character> ListCharacters(){
+    public List<Character> ListCharacters() {
 
         return repository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Optional<Character> getCharacter(@PathVariable Long id){
+        return repository.findById(id);
+    }
+
+//    @PutMapping
+//    public boolean updateCharacter(@RequestBody CharacterDto character){
+//
+//    }
+
     @PostMapping
     @Transactional
-    public void createCharacter(@RequestBody CharacterDto character){
+    public void createCharacter(@RequestBody CharacterDto character) {
         repository.save(new Character(character));
     }
 }
