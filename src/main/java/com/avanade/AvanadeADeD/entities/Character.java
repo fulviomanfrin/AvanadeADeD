@@ -24,6 +24,8 @@ public class Character {
     private String name;
     @Column(name = "health_points")
     private int healthPoints;
+    @Column(name = "defence")
+    private int defence;
     @Column(name = "strength")
     private int strength;
     @Column(name = "agility")
@@ -41,6 +43,7 @@ public class Character {
         this.name = character.name();
         this.healthPoints = character.healthPoints();
         this.strength = character.strength();
+        this.defence = character.defence();
         this.agility = character.agility();
         this.diceQuantity = character.diceQuantity();
         this.diceType = character.diceType();
@@ -64,6 +67,9 @@ public class Character {
         }
         if (character.strength() > 0) {
             this.strength = character.strength();
+        }
+        if (character.defence() > 0) {
+            this.defence = character.defence();
         }
         if (character.agility() > 0) {
             this.agility = character.agility();
