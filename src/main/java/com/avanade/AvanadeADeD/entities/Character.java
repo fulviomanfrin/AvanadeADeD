@@ -2,7 +2,6 @@ package com.avanade.AvanadeADeD.entities;
 
 import com.avanade.AvanadeADeD.dtos.CharacterDto;
 import com.avanade.AvanadeADeD.dtos.CharacterUpdateDto;
-import com.avanade.AvanadeADeD.interfaces.Combatant;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

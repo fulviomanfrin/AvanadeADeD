@@ -3,7 +3,6 @@ package com.avanade.AvanadeADeD.controllers;
 import com.avanade.AvanadeADeD.dtos.CharacterDto;
 import com.avanade.AvanadeADeD.dtos.CharacterUpdateDto;
 import com.avanade.AvanadeADeD.entities.Character;
-import com.avanade.AvanadeADeD.interfaces.CharacterRepository;
 import com.avanade.AvanadeADeD.services.CharacterService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +25,15 @@ public class CharacterController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Character> getCharacterById(@PathVariable Long id){
+    public Optional<Character> getCharacterById(@PathVariable Long id) {
 
         return service.getCharacterById(id);
     }
 
     @PutMapping
     @Transactional
-    public void updateCharacter(@RequestBody CharacterUpdateDto character){
-    service.updateCharacter(character);
+    public void updateCharacter(@RequestBody CharacterUpdateDto character) {
+        service.updateCharacter(character);
 
     }
 
@@ -45,7 +44,7 @@ public class CharacterController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCharacter(@PathVariable Long id){
+    public void deleteCharacter(@PathVariable Long id) {
         service.deleteCharacter(id);
     }
 

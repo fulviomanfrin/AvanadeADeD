@@ -7,7 +7,6 @@ import com.avanade.AvanadeADeD.interfaces.TurnRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class TurnService {
     private Character attacker;
     private Character defender;
 
-    public List<Turn> runTurns(Long attackerId, Long defenderId){
+    public List<Turn> runTurns(Long attackerId, Long defenderId) {
         attacker = characterRepository.getReferenceById(attackerId);
         var attackerHP = attacker.getHealthPoints();
         defender = characterRepository.getReferenceById(defenderId);

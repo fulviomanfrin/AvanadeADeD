@@ -7,8 +7,6 @@ import com.avanade.AvanadeADeD.interfaces.CharacterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +17,7 @@ public class CharacterService {
     @Autowired
     private CharacterRepository repository;
 
-    public void createCharacter(CharacterDto characterDto){
+    public void createCharacter(CharacterDto characterDto) {
         repository.save(new Character(characterDto));
     }
 
@@ -28,18 +26,18 @@ public class CharacterService {
         return repository.findAll();
     }
 
-    public Optional<Character> getCharacterById( Long id){
+    public Optional<Character> getCharacterById(Long id) {
 
         return repository.findById(id);
     }
 
-    public void updateCharacter(CharacterUpdateDto character){
+    public void updateCharacter(CharacterUpdateDto character) {
         var existingCharacter = repository.getReferenceById(character.id());
         existingCharacter.updateData(character);
 
     }
 
-    public void deleteCharacter(Long id){
+    public void deleteCharacter(Long id) {
         repository.deleteById(id);
     }
 

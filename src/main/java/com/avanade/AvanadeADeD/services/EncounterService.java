@@ -4,8 +4,6 @@ import com.avanade.AvanadeADeD.entities.DiceType;
 import com.avanade.AvanadeADeD.entities.Encounter;
 import com.avanade.AvanadeADeD.entities.Turn;
 import com.avanade.AvanadeADeD.interfaces.EncounterRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +22,7 @@ public class EncounterService {
 
     public Encounter runEncounter(Long heroId, Long monsterId) {
         var encounter = new Encounter();
-        if (heroHasInitiative()){
+        if (heroHasInitiative()) {
             runTurns(heroId, monsterId);
         } else {
             runTurns(monsterId, heroId);
@@ -41,7 +39,6 @@ public class EncounterService {
 
     private void endEncounter() {
     }
-
 
 
     private boolean heroHasInitiative() {
