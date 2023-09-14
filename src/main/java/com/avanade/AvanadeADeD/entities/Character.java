@@ -1,6 +1,7 @@
 package com.avanade.AvanadeADeD.entities;
 
 import com.avanade.AvanadeADeD.dtos.CharacterDto;
+import com.avanade.AvanadeADeD.dtos.CharacterUpdateDto;
 import com.avanade.AvanadeADeD.interfaces.Combatant;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -63,5 +64,30 @@ public class Character implements Combatant {
     @Override
     public int getAttackDamage() {
         return 0;
+    }
+
+
+    public void updateData(CharacterUpdateDto character) {
+        if (character.name() != null) {
+            this.name = character.name();
+        }
+        if (character.healthPoints() > 0) {
+            this.healthPoints = character.healthPoints();
+        }
+        if (character.strength() > 0) {
+            this.strength = character.strength();
+        }
+        if (character.agility() > 0) {
+            this.agility = character.agility();
+        }
+        if (character.diceQuantity() > 0) {
+            this.diceQuantity = character.diceQuantity();
+        }
+        if (character.diceType() != null) {
+            this.diceType = character.diceType();
+        }
+        if (character.faction() != null) {
+            this.faction = character.faction();
+        }
     }
 }
