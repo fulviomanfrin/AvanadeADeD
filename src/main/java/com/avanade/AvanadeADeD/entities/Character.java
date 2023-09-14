@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "characters")
 @Entity(name = "Character")
-public class Character implements Combatant {
+public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,17 +55,6 @@ public class Character implements Combatant {
             System.out.println(this.name + " has been defeated!");
         }
     }
-
-    @Override
-    public void attack(java.lang.Character target) {
-
-    }
-
-    @Override
-    public int getAttackDamage() {
-        return 0;
-    }
-
 
     public void updateData(CharacterUpdateDto character) {
         if (character.name() != null) {
