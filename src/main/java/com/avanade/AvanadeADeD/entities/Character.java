@@ -2,7 +2,6 @@ package com.avanade.AvanadeADeD.entities;
 
 import com.avanade.AvanadeADeD.dtos.CharacterDto;
 import com.avanade.AvanadeADeD.dtos.CharacterUpdateDto;
-import com.avanade.AvanadeADeD.interfaces.Combatant;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "characters")
 @Entity(name = "Character")
-public class Character implements Combatant {
+public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +24,8 @@ public class Character implements Combatant {
     private String name;
     @Column(name = "health_points")
     private int healthPoints;
+    @Column(name = "defence")
+    private int defence;
     @Column(name = "strength")
     private int strength;
     @Column(name = "agility")
@@ -42,6 +43,7 @@ public class Character implements Combatant {
         this.name = character.name();
         this.healthPoints = character.healthPoints();
         this.strength = character.strength();
+        this.defence = character.defence();
         this.agility = character.agility();
         this.diceQuantity = character.diceQuantity();
         this.diceType = character.diceType();
@@ -56,17 +58,6 @@ public class Character implements Combatant {
         }
     }
 
-    @Override
-    public void attack(java.lang.Character target) {
-
-    }
-
-    @Override
-    public int getAttackDamage() {
-        return 0;
-    }
-
-
     public void updateData(CharacterUpdateDto character) {
         if (character.name() != null) {
             this.name = character.name();
@@ -76,6 +67,9 @@ public class Character implements Combatant {
         }
         if (character.strength() > 0) {
             this.strength = character.strength();
+        }
+        if (character.defence() > 0) {
+            this.defence = character.defence();
         }
         if (character.agility() > 0) {
             this.agility = character.agility();

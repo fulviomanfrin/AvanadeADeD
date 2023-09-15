@@ -3,7 +3,7 @@ package com.avanade.AvanadeADeD.controllers;
 import com.avanade.AvanadeADeD.dtos.CharacterDto;
 import com.avanade.AvanadeADeD.dtos.CharacterUpdateDto;
 import com.avanade.AvanadeADeD.entities.Character;
-import com.avanade.AvanadeADeD.interfaces.CharacterRepository;
+import com.avanade.AvanadeADeD.services.CharacterService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,39 +15,37 @@ import java.util.Optional;
 @RequestMapping("/character")
 public class CharacterController {
     @Autowired
-    private CharacterRepository repository;
+    private CharacterService service;
 
     @GetMapping
     @Transactional
     public List<Character> ListCharacters() {
 
-        return repository.findAll();
+        return service.ListCharacters();
     }
 
     @GetMapping("/{id}")
-    public Optional<Character> getCharacter(@PathVariable Long id){
+    public Optional<Character> getCharacterById(@PathVariable Long id) {
 
-        return repository.findById(id);
+        return service.getCharacterById(id);
     }
 
     @PutMapping
     @Transactional
-    public void updateCharacter(@RequestBody CharacterUpdateDto character){
-    var existingCharacter = repository.getReferenceById(character.id());
-        existingCharacter.updateData(character);
+    public void updateCharacter(@RequestBody CharacterUpdateDto character) {
+        service.updateCharacter(character);
 
     }
 
     @PostMapping
     @Transactional
-    public void createCharacter(@RequestBody CharacterDto character) {
-
-        repository.save(new Character(character));
+    public void createCharacter(@RequestBody CharacterDto characterDto) {
+        service.createCharacter(characterDto);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCharacter(@PathVariable Long id){
-        repository.deleteById(id);
+    public void deleteCharacter(@PathVariable Long id) {
+        service.deleteCharacter(id);
     }
 
 }
