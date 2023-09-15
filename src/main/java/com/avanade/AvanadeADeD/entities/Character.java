@@ -24,10 +24,10 @@ public class Character {
     private String name;
     @Column(name = "health_points")
     private int healthPoints;
-    @Column(name = "defence")
-    private int defence;
     @Column(name = "strength")
     private int strength;
+    @Column(name = "defence")
+    private int defence;
     @Column(name = "agility")
     private int agility;
     @Column(name = "dice_quantity")
